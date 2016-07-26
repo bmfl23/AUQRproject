@@ -1,0 +1,131 @@
+<!--
+/*
+ * IFC: Greek Life 
+ * AUQR - Official Personal QR(PQR) System
+ *
+ * Date: 4/25/2016
+ * @author Brandon Fernandez 
+ */
+-->
+<!--/////////AUQR HOMEPAGE/////////////-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AU Qr Home</title>
+
+  <base herf="http://auburn.edu/student_info/ifc/webapplication/AUQR/"/>
+
+  <link href="css/auqrStyle.css" rel="stylesheet" type="text/css"/>
+
+  <!--////Bootstrap script links///////-->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <!--////jQuery script links///////-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+  <!--MY CREATED SCRIPTS-->
+  <script type="text/javascript" src="js/navDrawer.js"></script>
+  <script type="text/javascript" src="js/navigationClicks.js"></script>
+
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.drawer').drawer({
+        desktopEvent:'click'
+      });
+    });
+  </script>
+
+</head>
+
+<body style="background-color:white;">
+
+  <!--Nav Drawer Sart-->
+  <!--/////////////////////////////////////////////////////-->
+  <button class="drawer-toggle btn btn-outline-white" aria-label="menu">Menu 
+      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+  </button>    
+
+    <div class="drawer drawer-default">
+      <nav class="drawer-nav" role="navigation">
+      <div class="drawer-brand" align="center">
+        <a href="javascript:void(0);" onclick="navHomeClicked()">
+          <img class="drawerImg" src="images/AUicon.png" > QR Menu
+        </a> 
+        </div>
+        <ul class="nav drawer-nav-list" align="center">
+          <li>
+            <a href="javascript:void(0);" onclick="navHomeClicked()" aria-label="home">
+              <span class="glyphicon glyphicon-home" aria-hidden="true">
+              </span> Home</a>
+          </li>
+          <hr>
+          <li>
+            <a href="javascript:void(0);" onclick="navCreateAcctClicked()" aria-label="createAcct">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true">
+              </span> Create Account</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" onclick="navGenPQRClicked()" aria-label="pQR">
+              <span class="glyphicon glyphicon-qrcode" aria-hidden="true">
+              </span> Generate Personal QR Demo</a>
+          </li>
+          <hr>
+          <li>
+            <a href="javascript:void(0);" onclick="navSignInClicked()" aria-label="signIn">
+              <span class="glyphicon glyphicon-user" aria-hidden="true">
+              </span> Sign-In</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!--//////////////////////////////////////////////////-->
+    <!--Nav Drawer End-->
+
+<!--/////////Page Content Start////////////////////-->
+<div class="drawer-overlay">
+    <br><br>
+    <div class="container-fluid " align="center" style="max-width:980px;">
+      <!--^^Align all center & sets max width^^-->    
+      
+      <header>
+        <div class="container-fluid" id="AuQrbanner">
+        <br>
+          <table>
+            <tbody>
+              <tr><td colspan="4" valign="top" class="ClassicSpacer"></td></tr>
+              <tr><td><img class="img-responsive" src="images/img_auqrlogo.png"></td></tr>
+              <tr><td colspan="4" valign="top" class="ClassicSpacer"></td></tr>
+            </tbody>
+          </table>
+        <br>
+        </div> 
+      </header>
+
+      <hr class=hrDivider align="center"></hr>         
+
+      <h1 style="margin-top:0; padding-top:50px;">Welcome to the AUQR Homepage.</h1>
+
+      <!--JUMBOTRON-->
+      <div class="jumbotron" id="GSjumbo">
+        <div class="container">
+          <h1>Getting Started!</h1>
+            <p>If you are a student/new user looking for a Personal QR code(PQR), please create an account using your Auburn email. If you already have an account, please Sign-In to utilize site features or manage your information.</p>
+            <p>
+            <a class="btn btn-primary btn-lg" href="javascript:void(0);" onclick="navCreateAcctClicked()" role="button" Style="background-color: #0B0B61;">Create Account »</a>
+            </p>
+            <p>
+              OR
+            <a href="javascript:void(0);" onclick="navSignInClicked()">Sign-In »</a>
+            </p>
+        </div>
+      </div>
+      <!--JUMBOTRON END-->
+    </div>    
+</div>
+<!--/////////Page Content END////////////////////-->
+</body>
+</html>

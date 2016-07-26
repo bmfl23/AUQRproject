@@ -1,0 +1,185 @@
+<!--
+/*
+ * IFC: Greek Life 
+ * AUQR - Official Personal QR(PQR) System
+ *
+ * Date: 4/25/2016
+ * @author Brandon Fernandez 
+ */
+-->
+<!--////////Create Account Page//////////////-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AU Qr Create Account</title>
+
+  <base herf="http://auburn.edu/student_info/ifc/webapplication/AUQR/"/>
+
+  <link href="css/auqrStyle.css" rel="stylesheet" type="text/css"/>
+
+  <!--Bootstrap script links-->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <!--////jQuery script links///////-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+  <!--my custom script links-->
+  <script src="js/navDrawer.js"></script>
+  <script type="text/javascript" src="js/navigationClicks.js"></script>
+
+  <script type="text/javascript" src="js/checkPasswordMatches.js"></script>
+  <script type="text/javascript" src="js/checkEmailisValid.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.drawer').drawer({
+        desktopEvent:'click'
+      });
+    });
+  </script>
+
+</head>
+
+<body style="background-color:white;">
+
+  <!--Nav Drawer Sart-->
+  <!--/////////////////////////////////////////////////-->
+  <button class="drawer-toggle btn btn-outline-white" aria-label="menu">Menu 
+      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+  </button>     
+
+    <div class="drawer drawer-default">
+      <nav class="drawer-nav" role="navigation">
+      <div class="drawer-brand" align="center">
+        <a href="javascript:void(0);" onclick="navHomeClicked()">
+          <img class="drawerImg" src="images/AUicon.png" > QR Menu
+        </a>
+      </div>
+        <ul class="nav drawer-nav-list" align="center">
+          <li>
+            <a href="javascript:void(0);" onclick="navHomeClicked()" aria-label="home">
+              <span class="glyphicon glyphicon-home" aria-hidden="true">
+              </span> Home</a>
+          </li>
+          <hr>
+          <li>
+            <a href="javascript:void(0);" onclick="navCreateAcctClicked()" aria-label="createAcct">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true">
+              </span> Create Account</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" onclick="navGenPQRClicked()" aria-label="pQR">
+              <span class="glyphicon glyphicon-qrcode" aria-hidden="true">
+              </span> Generate Personal QR</a>
+          </li>
+          <hr>
+          <li>
+            <a href="javascript:void(0);" onclick="navSignInClicked()" aria-label="signIn">
+              <span class="glyphicon glyphicon-user" aria-hidden="true">
+              </span> Sign-In</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!--////////////NAV DRAWER END////////////////////////-->
+
+<!--////////PAGE CONTENT START//////////////-->
+<div class="drawer-overlay">
+    <br><br>
+    <div class="container-fluid " align="center" style="max-width:980px;">
+      <!--^^Align all center & sets max width^^-->    
+      
+      <header>
+        <div class="container-fluid" id="AuQrbanner">
+        <br>
+          <table>
+            <tbody>
+              <tr><td colspan="4" valign="top" class="ClassicSpacer"></td></tr>
+              <tr><td><img class="img-responsive" src="images/img_createAcct.png"></td></tr>
+              <tr><td colspan="4" valign="top" class="ClassicSpacer"></td></tr>
+            </tbody>
+          </table>
+        <br>
+        </div> 
+      </header>
+
+      <hr class=hrDivider align="center"></hr>         
+
+      <h1 style="margin-top:0; padding-top:50px;">AUQR Create an Account</h1>
+
+      <!--JUMBOTRON-->
+      <div class="jumbotron" id="GSjumbo">
+        <div class="container-fluid" align="center">
+          <h1 style = "font-size: 100%;">Please fill out the required acct. information.</h1>
+            <!--/////////Create Acct. input /////////////-->
+              <form id ="createAcctForm" class="form-horizontal" role="form" action="createAccount.php" method="POST">
+              <!--Fname-->  
+              <div class = "form-group">
+                  <label class="control-label col-sm-4" for="usrFname">First Name:</label>
+                  <div class="col-sm-4">       
+                      <input name="usrFname" id="usrFname" class="form-control" type="text" placeholder="First Name.">
+                      </input>
+                  </div>      
+              </div>
+              <!--Lname-->
+              <div class = "form-group">
+                  <label class="control-label col-sm-4" for="usrLname">Last Name:</label>
+                  <div class="col-sm-4">   
+                      <input name="usrLname" id="usrLname" class="form-control" type="text" placeholder="Last Name.">
+                      </input> 
+                  </div>     
+              </div>
+              <!--email-->
+              <div class = "form-group">
+                  <label class="control-label col-sm-4" for="auEmail">Username/Email:</label>
+                  <div class="col-sm-4">
+                      <input name="auEmail" id="auEmail" class="form-control" type="email" placeholder="Auburn Email."onchange="checkEmail(); return false;">
+                      </input>
+                      <h1 name ="auDomain" id="auDomain" style="font-size: 14px;">example@auburn.edu</h1>
+                      <span id="confirmMessage1" class="confirmMessage"></span>
+                  </div>    
+              </div>
+              <!--PWD-->
+              <div class="form-group">
+                  <label class="control-label col-sm-4" for="pwd1">Password:</label>
+                  <div class="col-sm-4">
+                      <input name="pwd1" id="pwd1" class="form-control" type="password" placeholder="Enter Password.">
+                  </div>          
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-sm-4" for="pwd2">Confirm Password:</label>
+                  <div class="col-sm-4">
+                      <input name="pwd2" id="pwd2" class="form-control" type="password" placeholder="Comfirm Password." onkeyup="checkPass(); return false;">
+                      <span id="confirmMessage" class="confirmMessage"></span>
+                  </div>          
+              </div>
+              <!--usrOrganization-->
+              <div class = "form-group">
+                  <label class="control-label col-sm-4" for="usrOrganization">* Organization:</label>
+                  <div class="col-sm-4">
+                      <input name="usrOrganization" id="usrOrganization" class="form-control" type="text" placeholder="Fraternity/Group.">
+                      </input>
+                      <h1 name ="orgNote" id="orgNote" style="font-size: 14px;">Note: A users organization/group association and password can be edited or modified at any time prior to account creation in the Account management Page.</h1>
+                      <h1 name ="astrx" id="astrx" style="font-size: 14px;">* - Denotes feilds that are optional.</h1>
+                  </div>    
+              </div>
+               <div class="form-group">   
+                  <button type="submit" id="createButton" class="btn btn-primary btn-lg" Style="background-color: #0B0B61;">Create Account. »</button>
+               </div>
+               </form>    
+                <!--/////////END OF CREATE ACCOUNT FORM/////////////-->
+            <p>
+              OR
+            <a href="javascript:void(0);" onclick="navHomeClicked()">Back to home »</a>
+            </p>
+        </div>
+      </div>
+      <!--END OF JUMBOTRON-->
+    </div>
+  </div>
+  <!--/////////////Page Content END ///////////////////////-->
+</body>
+</html>      
